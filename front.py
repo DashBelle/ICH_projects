@@ -2,8 +2,8 @@ from tabulate import tabulate
 
 def print_results(results):
     if results:
-        print('Результаты поиска:')
+        print('Search results:')
         columns = ['Title', 'Year', 'Rating', 'Genres', 'Runtime']
         print(tabulate(results, columns, 'grid'))
     else:
-        print('Ничего не нашлось')
+        print('Nothing found')
