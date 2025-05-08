@@ -9,11 +9,11 @@ def print_log_history():
         cursor.execute("SELECT AD, query FROM queries ORDER BY AD DESC")
         rows = cursor.fetchall()
         if rows:
-            print(tabulate(rows, headers=["ID", "Запрос"], tablefmt="grid"))
+            print(tabulate(rows, headers=["ID", "Request"], tablefmt="grid"))
         else:
-            print("⚠️ Нет сохранённых запросов.")
+            print("⚠️ No saved queries.")
     except Exception as e:
-        print(f"❌ Ошибка: {e}")
+        print(f"❌ Error: {e}")
     finally:
         if 'cursor' in locals(): cursor.close()
         if 'conn' in locals() and conn.is_connected(): conn.close()
