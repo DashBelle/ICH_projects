@@ -13,7 +13,7 @@ def execute_query(connection, query):
         cursor.execute(query)
         return cursor.fetchall()
     except Exception as e:
-        print(f"Ошибка выполнения запроса: {str(e)}")
+        print(f"Error executing request: {str(e)}")
         return None
     finally:
         cursor.close()
@@ -25,9 +25,9 @@ def insert_query(log):
         cursor = conn.cursor()
         cursor.execute('INSERT INTO queries (query) VALUES (%s)', (log,))
         conn.commit()
-        print("✅ Запрос записан.")
+        print("✅ Request recorded.")
     except Exception as e:
-        print(f'❌ Ошибка записи: {str(e)}')
+        print(f'❌ Write error: {str(e)}')
     finally:
         if 'cursor' in locals(): cursor.close()
         if 'conn' in locals() and conn.is_connected(): conn.close()
