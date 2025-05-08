@@ -2,11 +2,11 @@ from db_utils import connect_to_database, execute_query, insert_query
 from db_config import get_dbconfig
 
 def search_movies():
-    genre = input('Введите жанр [Action, Drama, Comedy и т.д.] (или оставьте поле пустым):')
-    year = input('Введите год [2007 - 2015] (или оставьте поле пустым):')
-    actor = input('Введите актера (или оставьте поле пустым):')
-    rating = input('Введите минимальный рейтинг (или оставьте поле пустым):')
-    keywords = input('Введите ключевые слова (или оставьте поле пустым)')
+    genre = input('Enter genre [Action, Drama, Comedy, etc.] (or leave blank):')
+    year = input('Enter year [2007 - 2015] (or leave blank):')
+    actor = input('Enter an actor (or leave blank):')
+    rating = input('Enter a minimum rating (or leave the field blank):')
+    keywords = input('Enter keywords (or leave blank)')
 
     conditions = [
         f"genres LIKE '%{genre}%'" if genre else "1",
@@ -31,6 +31,3 @@ def search_movies():
     log = ' | '.join(filter(None, log_parts))
     if log:
         insert_query(log)
-
-    conn = connect_to_database(**get_dbconfig(False))
-    return execute_query(conn, query)
